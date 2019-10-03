@@ -3,7 +3,7 @@
 With Java 8 Streams API, it's easy to iterate over collections and to parallise a stream is as easy as by calling a parallelStream() method. But, should we using parallelStream() wherever we can? What are the considerations?
 
 # [SpringBoot: Performance War](https://github.com/pksanthoshkumar/poc/tree/master/reactive-redis)
-A closer look at SpringBoot and its role in performance.
+A closer look at SpringBoot and its role in performance. ([Read the full article](https://dzone.com/articles/springboot-performance-war))
 
 Performance Matrix of Reactive APIs With WebFulx and Redis
 Reactive Systems are designed to address challenges posed by modern software systems - the challenges related to a large number of users and high throughput. Reactive systems are expected to be highly responsive, resilient, elastic and message-driven.
