@@ -27,31 +27,31 @@ public class ParallelStreamTester {
 		return personList;
 	}
 	
-	private static void sequentialStreamPerformance (Collection <Person> persons){
-	    long t1 = System.currentTimeMillis(), count;
-        
-        count = persons.stream().
-        		filter(x-> (x.getState().equals("NY") || x.getState().equals("TX")))
-        			.filter(x-> x.getAge() > 50)
-        				.filter(x-> x.getName().startsWith("M"))
-        					.count();
-        
-        long t2 = System.currentTimeMillis();
-        System.out.println("Count = " + count + " Normal Stream Takes " + (t2-t1) + " ms\n");
-	}
+private static void sequentialStreamPerformance (Collection <Person> persons){
+    long t1 = System.currentTimeMillis(), count;
+    
+    count = persons.stream().
+    		filter(x-> (x.getState().equals("NY") || x.getState().equals("TX")))
+    			.filter(x-> x.getAge() > 50)
+    				.filter(x-> x.getName().startsWith("M"))
+    					.count();
+    
+    long t2 = System.currentTimeMillis();
+    System.out.println("Count = " + count + " Normal Stream Takes " + (t2-t1) + " ms\n");
+}
 	
-	private static void parallelStreamPerformance (Collection <Person> persons){
-	    long t1 = System.currentTimeMillis(), count;
-        
-        count = persons.parallelStream().
-        		filter(x-> (x.getState().equals("NY") || x.getState().equals("TX")))
-        			.filter(x-> x.getAge() > 50)
-        				.filter(x-> x.getName().startsWith("M"))
-        					.count();
-        
-        long t2 = System.currentTimeMillis();
-        System.out.println("Count = " + count + " Parallel Stream takes " + (t2-t1) + " ms\n");
-	}
+private static void parallelStreamPerformance (Collection <Person> persons){
+    long t1 = System.currentTimeMillis(), count;
+    
+    count = persons.parallelStream().
+    		filter(x-> (x.getState().equals("NY") || x.getState().equals("TX")))
+    			.filter(x-> x.getAge() > 50)
+    				.filter(x-> x.getName().startsWith("M"))
+    					.count();
+    
+    long t2 = System.currentTimeMillis();
+    System.out.println("Count = " + count + " Parallel Stream takes " + (t2-t1) + " ms\n");
+}
 	
 	private static void forkJoinPoolParallelStreamPerformance (Collection <Person> persons){
 	    long t1 = System.currentTimeMillis(), count;	    
