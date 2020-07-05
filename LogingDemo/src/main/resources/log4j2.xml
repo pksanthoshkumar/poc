@@ -33,16 +33,25 @@
     </Appenders>
 
     <Loggers>
-        <Logger name="com.example.LogingDemo.controller" additivity="false" level="debug">
+        <Logger name="com.example.LogingDemo.controller"  level="debug">
             <AppenderRef ref="b2b-applicationLog" />
             <AppenderRef ref="console"  />
         </Logger>
 
-        <Logger name="com.example.LogingDemo.service" additivity="false" level="ERROR">
+        <Logger name="com.example.LogingDemo.aop.ControllerLoggingAspect"  level="debug">
+            <AppenderRef ref="b2b-applicationLog" />
+            <AppenderRef ref="console"  />
+        </Logger>
+
+        <Logger name="com.example.LogingDemo.service"  level="ERROR">
             <AppenderRef ref="b2b-Services" />
             <AppenderRef ref="console" />
         </Logger>
 
+        <Logger name="com.example.LogingDemo.aop.ServiceLoggingAspect"  level="INFO">
+            <AppenderRef ref="b2b-Services" />
+            <AppenderRef ref="console" />
+        </Logger>
         <Root level="INFO">
             <AppenderRef ref="console"/>
         </Root>
