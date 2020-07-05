@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="30">
+
+    <Properties>
+        <Property name="LOG_PATTERN">%d{yyyy-MM-dd'T'HH:mm:ss.SSSZ} %p %m%n</Property>
+        <Property name="APP_LOG_ROOT">c:/B2B-LOG</Property>
+    </Properties>
+
+    <Appenders>
+
+        <Console name="console" target="SYSTEM_OUT" follow="true">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+        </Console>
+
+        <RollingFile name="b2b-applicationLog" fileName="${sys:APP_LOG_ROOT}/b2b-applicationLog.log"
+                     filePattern="${sys:APP_LOG_ROOT}/b2b-applicationLog-%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="19500KB" />
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+
+        <RollingFile name="b2b-Services" fileName="${sys:APP_LOG_ROOT}/b2b-Services.log"
+                     filePattern="${sys:APP_LOG_ROOT}/b2b-Services-%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="19500KB" />
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+
+    </Appenders>
+
+    <Loggers>
+        <Logger name="com.example.LogingDemo.controller" additivity="false" level="debug">
+            <AppenderRef ref="b2b-applicationLog" />
+            <AppenderRef ref="console"  />
+        </Logger>
+
+        <Logger name="com.example.LogingDemo.service" additivity="false" level="ERROR">
+            <AppenderRef ref="b2b-Services" />
+            <AppenderRef ref="console" />
+        </Logger>
+
+        <Root level="INFO">
+            <AppenderRef ref="console"/>
+        </Root>
+
+    </Loggers>
+
+</Configuration>
